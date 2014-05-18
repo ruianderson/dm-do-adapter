@@ -223,7 +223,9 @@ module DataMapper
           begin
             keys = [
               "adapter", "user", "password", "host", "port", "path", "fragment",
-              "scheme", "query", "username", "database" ]
+              "scheme", "query", "username", "database"
+            ].map(&:to_sym)
+
             query = DataMapper::Ext::Hash.except(@options, *keys)
             query = nil if query.empty?
 
